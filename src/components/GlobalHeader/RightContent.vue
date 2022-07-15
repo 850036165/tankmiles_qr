@@ -1,5 +1,6 @@
 <template>
   <div :class="wrpCls">
+    <!--    <HeaderNotice :class="prefixCls"></HeaderNotice>-->
     <avatar-dropdown :menu="showMenu" :current-user="currentUser" :class="prefixCls" />
     <select-lang :class="prefixCls" />
   </div>
@@ -8,10 +9,12 @@
 <script>
 import AvatarDropdown from './AvatarDropdown'
 import SelectLang from '@/components/SelectLang'
+import HeaderNotice from '@/components/NoticeIcon'
 
 export default {
   name: 'RightContent',
   components: {
+    HeaderNotice,
     AvatarDropdown,
     SelectLang
   },

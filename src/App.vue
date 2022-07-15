@@ -7,9 +7,11 @@
 </template>
 
 <script>
+import zhCN from 'ant-design-vue/es/locale/zh_CN'
 import { domTitle, setDocumentTitle } from '@/utils/domUtil'
 import { i18nRender } from '@/locales'
-
+import moment from 'moment'// 引入moment
+moment.locale('zh-cn')// 配置moment中文环境
 export default {
   data () {
     return {
@@ -21,7 +23,7 @@ export default {
       const { title } = this.$route.meta
       title && (setDocumentTitle(`${i18nRender(title)} - ${domTitle}`))
 
-      return this.$i18n.getLocaleMessage(this.$store.getters.lang).antLocale
+      return zhCN
     }
   }
 }

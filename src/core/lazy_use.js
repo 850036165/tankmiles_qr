@@ -56,6 +56,7 @@ import MultiTab from '@/components/MultiTab'
 import PageLoading from '@/components/PageLoading'
 import PermissionHelper from '@/core/permission/permission'
 import './directives/action'
+import VueClipboard from 'vue-clipboard2'
 
 Vue.use(ConfigProvider)
 Vue.use(Layout)
@@ -99,7 +100,7 @@ Vue.use(Result)
 Vue.use(Statistic)
 Vue.use(Descriptions)
 Vue.use(Space)
-
+VueClipboard.config.autoSetContainer = true
 Vue.prototype.$confirm = Modal.confirm
 Vue.prototype.$message = message
 Vue.prototype.$notification = notification
@@ -112,6 +113,7 @@ Vue.use(Viser)
 Vue.use(Dialog) // this.$dialog func
 Vue.use(MultiTab)
 Vue.use(PageLoading)
+Vue.use(VueClipboard)
 Vue.use(PermissionHelper)
 Vue.use(VueCropper)
 

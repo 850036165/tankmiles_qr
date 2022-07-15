@@ -1,7 +1,12 @@
 <template>
   <!-- hidden PageHeaderWrapper title demo -->
-  <page-header-wrapper :title="false" :content="$t('form.basic-form.basic.description')">
+  <page-header-wrapper title="创建客户" content="请输入客户信息">
     <a-card :body-style="{padding: '24px 32px'}" :bordered="false">
+      <div style="display: flex;justify-content: center;cursor:pointer;flex-direction: column;align-items: center">
+        <a-avatar :size="100" style="margin-bottom: 16px;" @click="$refs.modal.edit(1)" >
+          上传
+        </a-avatar>
+      </div>
       <a-form @submit="handleSubmit" :form="form">
         <a-form-item
           :label="$t('form.basic-form.title.label')"
@@ -108,18 +113,27 @@
         </a-form-item>
       </a-form>
     </a-card>
+    <avatar-modal ref="modal" @ok="setAvatar"/>
   </page-header-wrapper>
 </template>
 
 <script>
+import AvatarModal from '@/views/account/settings/AvatarModal'
 export default {
   name: 'BaseForm',
+  components: {
+    AvatarModal
+  },
   data () {
     return {
+      customerURL: null,
       form: this.$form.createForm(this)
     }
   },
   methods: {
+    setAvatar (url) {
+      this.customerURL = this.$http.defaults.baseURL + url
+    },
     // handler
     handleSubmit (e) {
       e.preventDefault()

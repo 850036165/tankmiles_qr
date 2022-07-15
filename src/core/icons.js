@@ -7,5 +7,7 @@
  * 所有图标均从这里加载，方便管理
  */
 import bxAnaalyse from '@/assets/icons/bx-analyse.svg?inline' // path to your '*.svg?inline' file.
-
-export { bxAnaalyse }
+import metal from '@/assets/icons/jiangbei.svg.svg?inline'
+import metal1 from '@/assets/icons/jiangbei1.svg.svg?inline'
+import metal2 from '@/assets/icons/jiangbei2.svg.svg?inline'
+export { bxAnaalyse, metal, metal1, metal2 }

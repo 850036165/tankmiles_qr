@@ -250,10 +250,10 @@ export default {
       // 延迟 1 秒显示欢迎信息
       setTimeout(() => {
         this.$notification.success({
-          message: `你好`,
+          message: `尊敬的罐程用户`,
           description: `${timeFix()}，欢迎回来`
         })
-      }, 1000)
+      }, 500)
       this.isLoginError = false
     },
     requestFailed (err) {

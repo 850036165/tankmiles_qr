@@ -11,8 +11,8 @@ export function welcome () {
   const index = Math.floor(Math.random() * arr.length)
   return arr[index]
 }
-export function formatTime (time) {
-  return moment(time).format('YYYY-MM-DD HH:mm:ss')
+export function formatTime (time, format) {
+  return moment(time).format(format)
 }
 /**
  * 触发 window.resize

@@ -1,6 +1,5 @@
 // eslint-disable-next-line
 import { UserLayout, BasicLayout, BlankLayout } from '@/layouts'
-import { bxAnaalyse } from '@/core/icons'
 
 const RouteView = {
   name: 'RouteView',
@@ -21,7 +20,7 @@ export const asyncRouterMap = [
         name: 'dashboard',
         redirect: '/dashboard/workplace',
         component: RouteView,
-        meta: { title: 'menu.dashboard', keepAlive: true, icon: bxAnaalyse, permission: ['dashboard'] },
+        meta: { title: 'menu.dashboard', keepAlive: true, icon: 'dashboard', permission: ['dashboard'] },
         children: [
           {
             path: '/dashboard/workplace',
@@ -40,8 +39,7 @@ export const asyncRouterMap = [
           //   path: 'https://www.baidu.com/',
           //   name: 'Monitor',
           //   meta: { title: 'menu.dashboard.monitor', target: '_blank' }
-          // },
-
+          // }
         ]
       },
       // list
@@ -60,16 +58,30 @@ export const asyncRouterMap = [
             meta: { title: '设备列表', keepAlive: true, permission: ['table'] }
           },
           {
-            path: '/list/basic-list',
+            path: '/profile/device',
+            name: 'ProfileDevice',
+            hidden: true,
+            component: () => import('@/views/profile/advanced/DeviceInfo'),
+            meta: { title: '设备详情', permission: ['profile'] }
+          },
+          {
+            path: '/list/order-list',
             name: 'BasicList',
             component: () => import('@/views/list/OrderList'),
             meta: { title: '订单列表', keepAlive: true, permission: ['table'] }
           },
           {
-            path: '/list/card',
+            path: '/profile/order',
+            hidden: true,
+            name: 'ProfileOrder',
+            component: () => import('@/views/profile/basic/OrderInfo'),
+            meta: { title: '订单详情', permission: ['profile'] }
+          },
+          {
+            path: '/list/customer-list',
             name: 'CardList',
-            component: () => import('@/views/list/CardList'),
-            meta: { title: 'menu.list.card-list', keepAlive: true, permission: ['table'] }
+            component: () => import('@/views/list/CustomerList'),
+            meta: { title: '客户列表', keepAlive: true, permission: ['table'] }
           },
           {
             path: '/list/search',
@@ -103,15 +115,15 @@ export const asyncRouterMap = [
 // forms
       {
         path: '/form',
-        redirect: '/form/base-form',
+        redirect: '/form/create-customer',
         component: RouteView,
-        meta: { title: '创建信息', icon: 'form', permission: ['form'] },
+        meta: { title: '新增内容', icon: 'form', permission: ['form'] },
         children: [
           {
-            path: '/form/base-form',
+            path: '/form/create-customer',
             name: 'BaseForm',
             component: () => import('@/views/form/basicForm'),
-            meta: { title: 'menu.form.basic-form', keepAlive: true, permission: ['form'] }
+            meta: { title: '创建客户', keepAlive: true, permission: ['form'] }
           },
           {
             path: '/form/step-form',
@@ -128,29 +140,23 @@ export const asyncRouterMap = [
         ]
       },
       // profile
-      {
+     /* {
         path: '/profile',
         name: 'profile',
         component: RouteView,
         redirect: '/list/device-list',
-        // hidden: true,
+        hidden: true,
         meta: { title: 'menu.profile', icon: 'profile', permission: ['profile'] },
         children: [
           {
-            path: '/profile/basic',
-            name: 'ProfileBasic',
-            component: () => import('@/views/profile/basic'),
-            meta: { title: 'menu.profile.basic', permission: ['profile'] }
-          },
-          {
-            path: '/profile/device',
-            name: 'ProfileDevice',
+            path: '/profile/order',
             hidden: true,
-            component: () => import('@/views/profile/advanced/Advanced'),
-            meta: { title: '设备详情', permission: ['profile'] }
+            name: 'ProfileOrder',
+            component: () => import('@/views/profile/basic/OrderInfo'),
+            meta: { title: '订单详情', permission: ['profile'] }
           }
         ]
-      },
+      }, */
 
       // result
       {
@@ -176,7 +182,7 @@ export const asyncRouterMap = [
       },
 
       // Exception
-      {
+    /*  {
         path: '/exception',
         name: 'exception',
         component: RouteView,
@@ -186,23 +192,23 @@ export const asyncRouterMap = [
           {
             path: '/exception/403',
             name: 'Exception403',
-            component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/403'),
+            component: () => import(/!* webpackChunkName: "fail" *!/ '@/views/exception/403'),
             meta: { title: 'menu.exception.not-permission', permission: ['exception'] }
           },
           {
             path: '/exception/404',
             name: 'Exception404',
-            component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404'),
+            component: () => import(/!* webpackChunkName: "fail" *!/ '@/views/exception/404'),
             meta: { title: 'menu.exception.not-find', permission: ['exception'] }
           },
           {
             path: '/exception/500',
             name: 'Exception500',
-            component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/500'),
+            component: () => import(/!* webpackChunkName: "fail" *!/ '@/views/exception/500'),
             meta: { title: 'menu.exception.server-error', permission: ['exception'] }
           }
         ]
-      },
+      }, */
 
       // account
       {

@@ -16,9 +16,9 @@ function getGitHash () {
   } catch (e) {}
   return 'unknown'
 }
-
+// eslint-disable-next-line no-unused-vars
 const isProd = process.env.NODE_ENV === 'production'
-
+// eslint-disable-next-line no-unused-vars
 const assetsCDN = {
   // webpack build externals
   externals: {
@@ -71,7 +71,7 @@ const vueConfig = {
       .use('file-loader')
       .loader('file-loader')
       .options({
-        // name: 'assets/[name].[hash:8].[ext]',
+        name: 'assets/[name].[hash:8].[ext]',
         esModule: false
       })
 
@@ -92,8 +92,8 @@ const vueConfig = {
         modifyVars: {
           // less vars，customize ant design theme
 
-           'primary-color': '#004190',
-           'link-color': '#004190',
+          'primary-color': '#004190',
+          'link-color': '#004190',
           'border-radius-base': '2px'
         },
         // DO NOT REMOVE THIS LINE

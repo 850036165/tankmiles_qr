@@ -42,14 +42,16 @@
             title="进行中的订单"
             :body-style="{ padding: 0 }"
           >
-            <a slot="extra">全部订单</a>
+            <a slot="extra" @click="goOrderList">全部订单</a>
             <div>
               <a-card-grid class="project-card-grid" :key="i" v-for="(item, i) in orders">
                 <a-card :bordered="false" :body-style="{ padding: 0 }">
                   <a-card-meta>
                     <div slot="title" class="card-title">
                       <a-avatar size="small" :style="{'color':'#ffffff', 'backgroundColor': '#004190'}">{{ item.name.slice(0,1) }}</a-avatar>
-                      <a>{{ item.name }}-{{ item.quantity }}台</a>
+                      <a>{{ item.name }}<span v-if="item.orderType===0">-{{ item.quantity }}台</span>
+                        <a-tag color="#108ee9" v-if="item.orderType===1" style="margin: 0 10px">服务单</a-tag>
+                      </a>
                     </div>
                     <div slot="description" class="card-description">
                       预计交付时间：{{ item.finishDate }}
@@ -103,7 +105,7 @@
             </div>
           </a-card>
           <a-card
-            title="系统设备占比"
+            title="设备占比"
             style="margin-bottom: 24px"
             :loading="radarLoading"
             :bordered="false"
@@ -199,6 +201,9 @@ filters: {
     this.getTotalOrder()
   },
   methods: {
+    goOrderList () {
+      this.$router.push('/list/order-list')
+    },
  randomColor () {
   let col = '#'
   for (let i = 0; i < 6; i++) col += parseInt(Math.random() * 16).toString(16)
@@ -217,7 +222,7 @@ filters: {
       return hours < 100 ? hours : '100+'
     },
     getOrders () {
-      this.$http.get('/api/order').then(res => {
+      this.$http.get('/api/order?isFinished=0').then(res => {
         this.orders = res.data
         this.loading = false
       })
@@ -229,7 +234,7 @@ filters: {
       })
     },
     getTotalOrder () {
-      this.$http.get('/api/total_order?isFinished=0').then(res => {
+      this.$http.get('/api/total_order').then(res => {
         this.totalOrder = res.data
       })
     },
@@ -253,53 +258,6 @@ filters: {
         this.radarData = res.data
         this.radarLoading = false
       })
-// const data = [{
-//   item: '引用',
-//   '个人': 70,
-//   '团队': 30,
-//   '部门': 40
-// },
-//   {
-//     item: '口碑',
-//     '个人': 60,
-//     '团队': 70,
-//     '部门': 40
-//   },
-//   {
-//     item: '产量',
-//     '个人': 50,
-//     '团队': 60,
-//     '部门': 40
-//   },
-//   {
-//     item: '贡献',
-//     '个人': 40,
-//     '团队': 50,
-//     '部门': 40
-//   },
-//   {
-//     item: '热度',
-//     '个人': 60,
-//     '团队': 70,
-//     '部门': 40
-//   },
-//   {
-//     item: '引用',
-//     '个人': 70,
-//     '团队': 50,
-//     '部门': 40
-//   }
-// ]
-      // const dv = new DataSet.View().source(data)
-      //
-      // dv.transform({
-      //   type: 'fold',
-      //   fields: ['个人', '团队', '部门'],
-      //   key: 'user',
-      //   value: 'score'
-      // })
-
-      // this.radarData = dv.rows
     }
   }
 }

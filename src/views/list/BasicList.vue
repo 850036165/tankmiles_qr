@@ -56,7 +56,7 @@
               <p>{{ item.owner }}</p>
             </div>
             <div class="list-content-item">
-              <span>开始时间</span>
+              <span>创建日期</span>
               <p>{{ item.startAt }}</p>
             </div>
             <div class="list-content-item">

@@ -1,7 +1,7 @@
 // with polyfills
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
-
+import { FormModel } from 'ant-design-vue'
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
@@ -10,7 +10,6 @@ import i18n from './locales'
 import { VueAxios } from './utils/request'
 import ProLayout, { PageHeaderWrapper } from '@ant-design-vue/pro-layout'
 import themePluginConfig from '../config/themePluginConfig'
-
 // mock
 // WARNING: `mockjs` NOT SUPPORT `IE` PLEASE DO NOT USE IN `production` ENV.
 // import './mock'
@@ -21,6 +20,7 @@ import './permission1' // permission control
 import './utils/filter' // global filter
 import './global.less' // global style
 import qs from 'qs'
+Vue.use(FormModel)
 Vue.config.productionTip = false
 
 // mount axios to `Vue.$http` and `this.$http`

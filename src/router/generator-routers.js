@@ -32,7 +32,7 @@ const constantRouterComponents = {
   SearchProjects: () => import('@/views/list/search/Projects'),
   SearchApplications: () => import('@/views/list/search/Applications'),
   ProfileBasic: () => import('@/views/profile/basic'),
-  ProfileAdvanced: () => import('@/views/profile/advanced/Advanced'),
+  ProfileAdvanced: () => import('@/views/profile/advanced/DeviceInfo'),
 
   // result
   ResultSuccess: () => import(/* webpackChunkName: "result" */ '@/views/result/Success'),

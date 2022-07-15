@@ -32,10 +32,8 @@
             </a-list>
           </a-tab-pane>
           <a-tab-pane tab="消息" key="2">
-            123
           </a-tab-pane>
           <a-tab-pane tab="待办" key="3">
-            123
           </a-tab-pane>
         </a-tabs>
       </a-spin>

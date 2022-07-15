@@ -1,6 +1,6 @@
 <template>
   <div class="header-info">
-    <a-statistic :title="title" :precision="precision" :value="value" />
+    <a-statistic :title="title" :precision="precision" :value="value" ></a-statistic>
     <em v-if="bordered" />
   </div>
 </template>
@@ -14,7 +14,7 @@ export default {
       default: ''
     },
     value: {
-      type: String,
+      type: [Number, String],
       default: ''
     },
     precision: {

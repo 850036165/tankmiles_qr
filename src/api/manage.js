@@ -8,7 +8,10 @@ const api = {
   findOrder: '/api/order/',
   findDeviceType: '/api/deviceType/',
   findDeviceStep: '/api/deviceStep',
-  findDeviceReport: '/api/report'
+  findDeviceReport: '/api/report',
+  submitOrder: '/api/submit_order',
+  totalCustomer: '/api/total_customer',
+  getCustomerList: '/api/customer'
 }
 
 export default api
@@ -65,6 +68,27 @@ export function getDeviceStepBySn (parameter) {
 export function getReportByDeviceId (parameter) {
   return request({
     url: api.findDeviceReport,
+    method: 'get',
+    params: parameter
+  })
+}
+export function submitOrder (parameter) {
+  return request({
+    url: api.submitOrder,
+    method: 'get',
+    data: parameter
+  })
+}
+export function getTotalCustomer (parameter) {
+  return request({
+    url: api.totalCustomer,
+    method: 'get',
+    params: parameter
+  })
+}
+export function getCustomerList (parameter) {
+  return request({
+    url: api.getCustomerList,
     method: 'get',
     params: parameter
   })

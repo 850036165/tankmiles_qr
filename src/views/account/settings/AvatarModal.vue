@@ -61,10 +61,9 @@ export default {
       visible: false,
       id: null,
       confirmLoading: false,
-      fileList: [],
+      fileName: [],
       uploading: false,
       options: {
-        // img: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
         img: '',
         autoCrop: true,
         autoCropWidth: 200,
@@ -103,7 +102,9 @@ export default {
       // 转化为base64
       reader.readAsDataURL(file)
       reader.onload = () => {
+        console.log(file)
         this.options.img = reader.result
+        this.fileName = file.name
       }
       // 转化为blob
       // reader.readAsArrayBuffer(file)
@@ -119,11 +120,12 @@ export default {
       // 输出
       if (type === 'blob') {
         this.$refs.cropper.getCropBlob((data) => {
+          console.log(data)
           const img = window.URL.createObjectURL(data)
           this.model = true
           this.modelSrc = img
           formData.append('file', data, this.fileName)
-          this.$http.post('https://www.mocky.io/v2/5cc8019d300000980a055e76', formData, { contentType: false, processData: false, headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
+          this.$http.post('/api/upload_avatar', formData, { contentType: false, processData: false, headers: { 'Content-Type': 'multipart/form-data' } })
             .then((response) => {
               console.log('upload response:', response)
               // var res = response.data

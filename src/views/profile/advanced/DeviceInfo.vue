@@ -212,7 +212,7 @@ export default {
           title: '报修时间',
           dataIndex: 'time',
           key: 'time',
-          customRender: (text) => formatTime(text)
+          customRender: (text) => formatTime(text, 'YYYY-MM-DD HH:mm:ss')
         },
         {
           title: '处理人',
@@ -225,7 +225,7 @@ export default {
           key: 'repairTime',
           customRender: (text) => {
             if (text) {
-              formatTime(text)
+              formatTime(text, 'YYYY-MM-DD HH:mm:ss')
             }
           }
         },
@@ -256,7 +256,7 @@ export default {
           title: '操作时间',
           dataIndex: 'stepTime',
           key: 'stepTime',
-          customRender: (text) => formatTime(text)
+          customRender: (text) => formatTime(text, 'YYYY-MM-DD HH:mm:ss')
         }
       ]
     }
@@ -361,7 +361,7 @@ export default {
             })
           }
           this.deviceStep = this.deviceStep.map(item => {
-            item.stepTime = formatTime(item.stepTime)
+            item.stepTime = formatTime(item.stepTime, 'YYYY-MM-DD HH:mm:ss')
             return item
           })
           if (this.deviceStep.length === 0) {
@@ -405,7 +405,7 @@ export default {
           })
 }
           this.deviceStep = this.deviceStep.map(item => {
-            item.stepTime = formatTime(item.stepTime)
+            item.stepTime = formatTime(item.stepTime, 'YYYY-MM-DD HH:mm:ss')
             return item
           })
           if (this.deviceStep.length === 0) {
